@@ -1,11 +1,13 @@
 
+from ast import While
 from collections import deque
 import heapq
 import os
+from sre_constants import RANGE
 
 from ClassStation import Station
 
-#-------------------------------------------------------------------------------------------------- File handling
+#--------------------------------------------------------------------------------------------------- File handling
 directory_path = os.getcwd()
 f = open(directory_path + "\\01_Exercise_Supermarket\data\supermarkt.txt", "w")
 fc = open(directory_path + "\\01_Exercise_Supermarket\data\supermarkt_customer.txt", "w")
@@ -49,11 +51,17 @@ def my_print2(s, msg, name):
 
 
 #evQ = EventQueue()
+
+#--------------------------------------------------------------------------------------------------- Create Stations
 baecker = Station(10, 'Bäcker')
-print(baecker)
-#metzger = Station(30, 'Metzger')
-#kaese = Station(60, 'Käse')
-#kasse = Station(5, 'Kasse')
+metzger = Station(30, 'Metzger')
+kaese = Station(60, 'Käse')
+kasse = Station(5, 'Kasse')
+print(str(baecker) + " created")
+print(str(metzger) + " created")
+print(str(kaese) + " created")
+print(str(kasse) + " created")
+
 #Customer.served['Bäcker'] = 0
 #Customer.served['Metzger'] = 0
 #Customer.served['Käse'] = 0
