@@ -1,3 +1,6 @@
+import heapq
+import os
+
 # class consists of
 # q: event queue
 # time: current time
@@ -5,7 +8,9 @@
 # methods push, pop, and start as described in the problem description
 
 class EventQueue:
-  
+    
   def __init__(self):
-    self.removeThisVar = 0
+    self.q = []
+    self.time = 0
+    self.evCount = 0
 # please implement here
