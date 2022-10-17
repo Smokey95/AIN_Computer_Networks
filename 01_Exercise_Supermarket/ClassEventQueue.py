@@ -13,4 +13,19 @@ class EventQueue:
     self.q = []
     self.time = 0
     self.evCount = 0
-# please implement here
+
+
+  def push(self, ev):
+    heapq.heappush(self.q, ev)
+
+
+  def pop(self):
+    ev = heapq.heappop(self.q)
+    self.time = ev.time
+    self.evCount += 1
+    return 
+
+  def start(self):
+    while len(self.q) > 0:
+      ev = self.pop()
+      ev.process(self)

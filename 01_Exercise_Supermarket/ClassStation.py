@@ -1,3 +1,5 @@
+import heapq
+
 # class consists of
 # name: station name
 # buffer: customer queue
@@ -13,9 +15,23 @@ class Station():
     self.CustomerWaiting = False
     self.busy = False
     
-  def lineUp(self, customer):
+  def queue(self, customer):
     self.buffer.append(customer)
     self.CustomerWaiting = True
+    
+  def serve(self):
+    self.busy = True
+    customer = self.buffer.pop(0)
+    if len(self.buffer) == 0:
+      self.CustomerWaiting = False
+    customer.served(self.name)
+    return customer
+    
+  def isBusy(self):
+    return self.busy
+    
+  def isCustomerWaiting(self):
+    return self.CustomerWaiting
   
   def __str__(self):
     return self.name
