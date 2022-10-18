@@ -8,6 +8,7 @@ from sre_constants import RANGE
 from ClassEventQueue import EventQueue
 from ClassStation import Station
 from ClassCustomer import Customer
+from ClassEvent import Event
 
 #--------------------------------------------------------------------------------------------------- File handling
 directory_path = os.getcwd()
@@ -42,21 +43,21 @@ def my_print2(s, msg, name):
 #
 # einkaufsliste: 
 # name: Customer type
-# sT: start time
-# dT: delta time
-# mT: max time
-def startCustomers(einkaufsliste, name, sT, dT, mT):
+# start time: time when first customer arrives at supermarket
+# delta time: Time between two customers
+# maxSimulationTime: max time
+def startCustomers(einkaufsliste, name, startTime, deltaTime, maxSimulationTime):
     i = 1
-    t = sT
-    while t < mT:
+    t = startTime
+    while t < maxSimulationTime:
         kunde = Customer(list(einkaufsliste), name + str(i), t)
-        ev = Event(t, kunde.run, prio=1)
-        evQ.push(ev)
+        event = Event(t, kunde.run, prio=1)
+        eventQueue.push(event)
         i += 1
-        t += dT
+        t += deltaTime
 
 
-evQ = EventQueue()
+eventQueue = EventQueue()
 
 #--------------------------------------------------------------------------------------------------- Create Stations
 baecker = Station(10, 'Bäcker')
@@ -69,13 +70,13 @@ kasse = Station(5, 'Kasse')
 #print(str(kasse) + " created")
 Customer.served['Bäcker'] = 0
 Customer.served['Metzger'] = 0
-Customer.served['Kätimese'] = 0
+Customer.served['Käse'] = 0
 Customer.served['Kasse'] = 0
 Customer.dropped['Bäcker'] = 0
 Customer.dropped['Metzger'] = 0
 Customer.dropped['Käse'] = 0
 Customer.dropped['Kasse'] = 0
-# List =          (Time Way, Name Station, Amount, max. customumers)
+# List =          (Time Way, Name Station, Amount, max. customer)
 einkaufsliste1 = [(10, baecker, 10, 10), 
                   (30, metzger, 5, 10), 
                   (45, kaese, 3, 5), 
@@ -86,7 +87,7 @@ einkaufsliste2 = [(30, metzger, 2, 5),
 
 startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
 startCustomers(einkaufsliste2, 'B', 1, 60, 30 * 60 + 1)
-evQ.start()
+eventQueue.start()
 my_print('Simulationsende: %is' % EventQueue.time)
 my_print('Anzahl Kunden: %i' % (Customer.count))
 my_print('Anzahl vollständige Einkäufe %i' % Customer.complete)
