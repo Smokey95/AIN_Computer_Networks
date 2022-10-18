@@ -1,13 +1,15 @@
-# class consists of instance variables:
-# t: time stamp
-# work: job to be done
-# args: list of arguments for job to be done
-# prio: used to give leaving, being served, and arrival different priorities
 class Event:
+    """
+    ### Class consists of instance variables:
+    timeStamp: Time stamp when a event occurs
+    work: job to be done
+    args: list of arguments for job to be done
+    prio: used to give leaving, being served, and arrival different priorities
+    """
     counter = 0
 
-    def __init__(self, t, work, args=(), prio=255):
-        self.t = t
+    def __init__(self, timeStamp, work, args=(), prio=255):
+        self.t = timeStamp
         self.n = Event.counter
         self.work = work
         self.args = args
