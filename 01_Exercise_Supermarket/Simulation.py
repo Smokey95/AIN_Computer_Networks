@@ -1,7 +1,6 @@
 
 from ast import While
 from collections import deque
-import heapq
 import os
 from sre_constants import RANGE
 
@@ -51,7 +50,7 @@ def startCustomers(einkaufsliste, name, startTime, deltaTime, maxSimulationTime)
     t = startTime
     while t < maxSimulationTime:
         kunde = Customer(list(einkaufsliste), name + str(i), t)
-        event = Event(t, kunde.run, prio=1)
+        event = Event(t, kunde.run(eventQueue), prio=1)
         eventQueue.push(event)
         i += 1
         t += deltaTime

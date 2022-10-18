@@ -18,11 +18,8 @@ class Customer():
         self.start = start
         self.end = 0
         Customer.count += 1
-        #my_print1(self.name, 'Ankunft', 'at')
 
-    def run(self):
-        #my_print1(self.name, 'Start', 'at')
+    def run(self, evQ):
         self.einkaufsliste[0][1].add(self)
         ev = Event(self.start + self.einkaufsliste[0][0], self.run2, args=(self.einkaufsliste[0][1],), prio=1)
         evQ.push(ev)
-        #my_print1(self.name, 'Ende', 'at')
