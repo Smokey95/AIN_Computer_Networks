@@ -1,6 +1,8 @@
 # class consists of
 # statistics variables
 # and methods as described in the problem description
+import ClassEvent as Event
+
 class Customer():
     
     served = dict()
@@ -18,4 +20,9 @@ class Customer():
         Customer.count += 1
         #my_print1(self.name, 'Ankunft', 'at')
 
-# please implement here
+    def run(self):
+        #my_print1(self.name, 'Start', 'at')
+        self.einkaufsliste[0][1].add(self)
+        ev = Event(self.start + self.einkaufsliste[0][0], self.run2, args=(self.einkaufsliste[0][1],), prio=1)
+        evQ.push(ev)
+        #my_print1(self.name, 'Ende', 'at')

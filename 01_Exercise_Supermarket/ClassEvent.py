@@ -13,3 +13,7 @@ class Event:
         self.args = args
         self.prio = prio
         Event.counter += 1
+
+
+    def process(self):
+        self.work(*self.args)
