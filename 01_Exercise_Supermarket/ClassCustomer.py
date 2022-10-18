@@ -20,6 +20,7 @@ class Customer():
         Customer.count += 1
 
     def run(self, evQ):
-        self.einkaufsliste[0][1].add(self)
-        ev = Event(self.start + self.einkaufsliste[0][0], self.run2, args=(self.einkaufsliste[0][1],), prio=1)
+        self.einkaufsliste[0][1].queue(self)
+
+        ev = Event(self.start + self.einkaufsliste[0][0], self.run(ev), args=(self.einkaufsliste[0][1],), prio=1)
         evQ.push(ev)

@@ -50,7 +50,7 @@ def startCustomers(einkaufsliste, name, startTime, deltaTime, maxSimulationTime)
     t = startTime
     while t < maxSimulationTime:
         kunde = Customer(list(einkaufsliste), name + str(i), t)
-        event = Event(t, kunde.run(eventQueue), prio=1)
+        event = Event(t, kunde.run, prio=1)
         eventQueue.push(event)
         i += 1
         t += deltaTime
@@ -86,7 +86,8 @@ einkaufsliste2 = [(30, metzger, 2, 5),
 
 startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
 startCustomers(einkaufsliste2, 'B', 1, 60, 30 * 60 + 1)
-eventQueue.start()
+print(eventQueue)
+#eventQueue.start()
 my_print('Simulationsende: %is' % EventQueue.time)
 my_print('Anzahl Kunden: %i' % (Customer.count))
 my_print('Anzahl vollständige Einkäufe %i' % Customer.complete)

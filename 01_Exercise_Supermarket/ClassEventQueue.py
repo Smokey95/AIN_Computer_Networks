@@ -1,4 +1,4 @@
-import heapq
+from heapq import heappush, heappop, heapify
 import os
 
 # class consists of
@@ -14,14 +14,14 @@ class EventQueue:
     self.time = 0
     self.evCount = 0
 
-    heapq.heapify(self.q)
+    heapify(self.q)
 
   def push(self, ev):
-    self.q.heappush(self.q, ev)
+    heappush(self.q, ev)
 
 
   def pop(self):
-    ev = self.q.heappop(self.q)
+    ev = heappop(self.q)
     self.time = ev.time
     self.evCount += 1
     return 
