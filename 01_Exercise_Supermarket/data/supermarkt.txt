@@ -1,0 +1,3 @@
+Simulationsende: 0s
+Anzahl Kunden: 2
+Anzahl vollständige Einkäufe 0

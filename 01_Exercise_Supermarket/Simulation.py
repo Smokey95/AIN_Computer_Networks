@@ -32,11 +32,10 @@ def my_print1(k, s, msg):
 # name: customer name
 def my_print2(s, msg, name):
     t = EventQueue.time
-    # print(str(round(t,4))+':'+s+' '+msg)
+    print(str(round(t,4))+':'+s+' '+msg)
     fs.write(str(round(t, 4)) + ':' + s + ' ' + msg + ' ' + name + '\n')
 
 
-#
 # einkaufsliste: 
 # name: Customer type
 # start time: time when first customer arrives at supermarket
@@ -47,8 +46,7 @@ def startCustomers(einkaufsliste, name, startTime, deltaTime, maxSimulationTime)
     t = startTime
     while t < maxSimulationTime:
         kunde = Customer(list(einkaufsliste), name + str(i), t)
-        #event = Event(t, kunde.run , 1)
-        event = Event(t, "Test", kunde, 1)
+        event = Event(t, kunde.begin, prio=1)
         eventQueue.push(event)
         i += 1
         t += deltaTime
@@ -61,10 +59,7 @@ baecker = Station(10, 'Bäcker')
 metzger = Station(30, 'Metzger')
 kaese = Station(60, 'Käse')
 kasse = Station(5, 'Kasse')
-#print(str(baecker) + " created")
-#print(str(metzger) + " created")
-#print(str(kaese) + " created")
-#print(str(kasse) + " created")
+#--------------------------------------------------------------------------------------------------- Init Customer log
 Customer.served['Bäcker'] = 0
 Customer.served['Metzger'] = 0
 Customer.served['Käse'] = 0
@@ -73,6 +68,7 @@ Customer.dropped['Bäcker'] = 0
 Customer.dropped['Metzger'] = 0
 Customer.dropped['Käse'] = 0
 Customer.dropped['Kasse'] = 0
+
 # List =          (Time Way, Name Station, Amount, max. customer)
 einkaufsliste1 = [(10, baecker, 10, 10), 
                   (30, metzger, 5, 10), 
@@ -82,26 +78,19 @@ einkaufsliste2 = [(30, metzger, 2, 5),
                   (30, kasse, 3, 20),
                   (20, baecker, 3, 20)]
 
-startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
-startCustomers(einkaufsliste2, 'B', 1, 60, 30 * 60 + 1)
+#startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
+#startCustomers(einkaufsliste2, 'B', 1, 60, 30 * 60 + 1)
+startCustomers(einkaufsliste1, 'A', 0, 200, 30)
+startCustomers(einkaufsliste2, 'B', 1, 60, 30)
+
+
 
 print(eventQueue)
-eventQueue.pop()
-print("popped element out of Queue")
-print(eventQueue)
-eventQueue.pop()
-print("popped element out of Queue")
-print(eventQueue)
-eventQueue.pop()
-print("popped element out of Queue")
-print(eventQueue)
-eventQueue.pop()
-print("popped element out of Queue")
-print(eventQueue)
-#eventQueue.start()
-#my_print('Simulationsende: %is' % EventQueue.time)
-#my_print('Anzahl Kunden: %i' % (Customer.count))
-#my_print('Anzahl vollständige Einkäufe %i' % Customer.complete)
+
+eventQueue.start()
+my_print('Simulationsende: %is' % EventQueue.time)
+my_print('Anzahl Kunden: %i' % (Customer.count))
+my_print('Anzahl vollständige Einkäufe %i' % Customer.complete)
 #x = Customer.duration / Customer.count
 #my_print(str('Mittlere Einkaufsdauer %.2fs' % x))
 #x = Customer.duration_cond_complete / Customer.complete

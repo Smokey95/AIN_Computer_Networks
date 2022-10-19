@@ -18,11 +18,8 @@ class Event:
       self.args       = args  #What should that be?
       self.prio       = prio
       self.id         = Event.counter
-      Event.counter  += 1
-
-    def process(self):
-      self.work(*self.args)
-      
+      Event.counter  += 1   
+    
     def __lt__(self, other):
       return self.t < other.t
     
