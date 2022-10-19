@@ -18,18 +18,38 @@ class Event:
 
 
     def process(self):
-        self.work(*self.args)
+      self.work(*self.args)
 
 
     def __lt__(self, other):
-        if self.t == other.t:
-            return self.prio < other.prio
-        else:
-            return self.t < other.t
-
+      return self.t < other.t
 
     def __le__(self, other):
-        if self.t == other.t:
-            return self.prio <= other.prio
-        else:
-            return self.t <= other.t
+      return self.t <= other.t
+    
+    def __gt__(self, other):
+      return self.t > other.t
+    
+    def __ge__(self, other):
+      return self.t >= other.t
+      
+    def __eq__(self, other):
+      return self.t == other.t
+
+    #def __gt__(self, other):
+    #    if self.t > other.t:
+    #        return self.t > other.t
+    #    else:
+    #        return self.t > other.t
+    
+    #def __le__(self, other):
+    #    if self.t = other.t:
+    #        return self.prio <= other.prio
+    #    else:
+    #        return self.t <= other.t
+    
+    def __str__(self):
+      return "[Time: %4d, Work: %s, EventID: %d]\n" % (self.t, self.work, self.n)
+    
+    def __repr__(self):
+      return "[Time: %4d, Work: %s, EventID: %d]\n" % (self.t, self.work, self.n)

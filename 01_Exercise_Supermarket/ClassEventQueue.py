@@ -22,7 +22,7 @@ class EventQueue:
 
   def pop(self):
     ev = heappop(self.q)
-    self.time = ev.time
+    self.time = ev.t
     self.evCount += 1
     return 
 
@@ -30,3 +30,6 @@ class EventQueue:
     while len(self.q) > 0:
       ev = self.pop()
       ev.process(self)
+      
+  def __str__(self):
+    return "%s" % str(self.q)
