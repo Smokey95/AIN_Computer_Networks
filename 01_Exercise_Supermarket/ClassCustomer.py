@@ -24,3 +24,6 @@ class Customer():
 
         ev = Event(self.start + self.einkaufsliste[0][0], self.run(ev), args=(self.einkaufsliste[0][1],), prio=1)
         evQ.push(ev)
+        
+    def __str__(self) -> str:
+        return self.name

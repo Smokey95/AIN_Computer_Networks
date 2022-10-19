@@ -9,47 +9,25 @@ class Event:
     counter = 0
 
     def __init__(self, timeStamp, work, args=(), prio=255):
-        self.t = timeStamp
-        self.n = Event.counter
-        self.work = work
-        self.args = args
-        self.prio = prio
-        Event.counter += 1
+        self.t          = timeStamp
+        self.work       = work
+        self.args       = args
+        self.prio       = prio
+        self.id         = Event.counter
+        Event.counter  += 1
 
 
     def process(self):
       self.work(*self.args)
-
-
+      
     def __lt__(self, other):
       return self.t < other.t
-
+    
     def __le__(self, other):
       return self.t <= other.t
-    
-    def __gt__(self, other):
-      return self.t > other.t
-    
-    def __ge__(self, other):
-      return self.t >= other.t
-      
-    def __eq__(self, other):
-      return self.t == other.t
 
-    #def __gt__(self, other):
-    #    if self.t > other.t:
-    #        return self.t > other.t
-    #    else:
-    #        return self.t > other.t
-    
-    #def __le__(self, other):
-    #    if self.t = other.t:
-    #        return self.prio <= other.prio
-    #    else:
-    #        return self.t <= other.t
-    
     def __str__(self):
-      return "[Time: %4d, Work: %s, EventID: %d]\n" % (self.t, self.work, self.n)
+      return "Event(time: %4d, prio: %3d, id: %2d, work: %s, args: %s)\n" % (self.t, self.prio, self.id, self.work, self.args)
     
     def __repr__(self):
-      return "[Time: %4d, Work: %s, EventID: %d]\n" % (self.t, self.work, self.n)
+      return "Event(time: %4d, prio: %3d, id: %2d, work: %s, args: %s)\n" % (self.t, self.prio, self.id, self.work, self.args)
