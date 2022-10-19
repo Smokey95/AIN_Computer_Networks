@@ -13,17 +13,14 @@ class Customer():
     count = 0
     
     def __init__(self, einkaufsliste, name, start):
-        self.einkaufsliste = einkaufsliste
-        self.name = name
-        self.start = start
-        self.end = 0
-        Customer.count += 1
+      self.einkaufsliste = einkaufsliste
+      self.name = name
+      self.start = start
+      self.end = 0
+      Customer.count += 1
 
-    def run(self, evQ):
-        self.einkaufsliste[0][1].queue(self)
-
-        ev = Event(self.start + self.einkaufsliste[0][0], self.run(ev), args=(self.einkaufsliste[0][1],), prio=1)
-        evQ.push(ev)
+    def run(self):
+      
         
     def __str__(self) -> str:
-        return self.name
+      return self.name
