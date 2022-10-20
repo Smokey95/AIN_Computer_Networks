@@ -26,16 +26,25 @@ class EventQueue:
     return ev
 
   def start(self):
+    self.printHeader()
     while len(self.q) > 0:
       ev = self.pop()
       EventQueue.time = ev.t
+      new_ev = ev.work()
+      #new_ev = ev.work(*ev.args)
+      print("%4d : %s" %(EventQueue.time, str(ev)))
+      while(new_ev is not None and new_ev.__len__() > 0):
+        self.push(new_ev.pop(0))
+    self.printEnd()
 
-      new_ev = ev.work(*ev.args)
-      if new_ev is not None:
-        self.push(new_ev)
-
-      
-      
+  def printHeader(self):
+    print("==============================================================================================================")
+    print("Time : Event")
+    print("-----+--------------------------------------------------------------------------------------------------------")
+  
+  def printEnd(self):
+    print("==============================================================================================================")
+  
   def __str__(self):
     return "%s" % str(self.q)
     

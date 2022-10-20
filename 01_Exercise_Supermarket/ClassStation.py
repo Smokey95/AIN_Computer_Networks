@@ -1,5 +1,6 @@
 import heapq
 
+from ClassCustomer import Customer
 # class consists of
 # name: station name
 # buffer: customer queue
@@ -26,10 +27,11 @@ class Station():
     customer = self.buffer.pop(0)
     if len(self.buffer) == 0:
       self.CustomerWaiting = False
-    customer.served(self.name)
-    
+    Customer.served[self.name] += 1
     return customer
 
+  def leave(self):
+     return self.serve()
 
   def isBusy(self):
     return self.busy

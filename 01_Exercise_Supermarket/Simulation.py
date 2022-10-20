@@ -85,7 +85,7 @@ startCustomers(einkaufsliste2, 'B', 1, 60, 30)
 
 
 
-print(eventQueue)
+#print(eventQueue)
 
 eventQueue.start()
 my_print('Simulationsende: %is' % EventQueue.time)

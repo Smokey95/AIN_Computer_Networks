@@ -27,7 +27,10 @@ class Event:
       return self.t <= other.t
 
     def __str__(self):
-      return "Event(time: %4d, prio: %3d, id: %2d, work: %s, args: %s)\n" % (self.t, self.prio, self.id, self.work, self.args)
-    
+      return "Event(time: %4d, prio: %3d, id: %2d, work: %7s, args: %s)" % (self.t, self.prio, self.id, self.work.__name__, self.args)
+      
     def __repr__(self):
-      return "Event(time: %4d, prio: %3d, id: %2d, work: %s, args: %s)\n" % (self.t, self.prio, self.id, self.work, self.args)
+      return "Event(time: %4d, prio: %3d, id: %2d, work: %7s, args: %s)" % (self.t, self.prio, self.id, self.work.__name__, self.args)
+      
+    def getCustomerName(self):
+      return self.work
