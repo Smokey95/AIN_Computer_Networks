@@ -46,7 +46,7 @@ def startCustomers(einkaufsliste, name, startTime, deltaTime, maxSimulationTime)
     t = startTime
     while t < maxSimulationTime:
         kunde = Customer(list(einkaufsliste), name + str(i), t)
-        event = Event(t, kunde.begin, prio=1)
+        event = Event(t, kunde.begin, prio=1, args=(kunde.name))
         eventQueue.push(event)
         i += 1
         t += deltaTime
@@ -88,18 +88,23 @@ startCustomers(einkaufsliste2, 'B', 1, 60, 30)
 #print(eventQueue)
 
 eventQueue.start()
-my_print('Simulationsende: %is' % EventQueue.time)
-my_print('Anzahl Kunden: %i' % (Customer.count))
-my_print('Anzahl vollständige Einkäufe %i' % Customer.complete)
-#x = Customer.duration / Customer.count
-#my_print(str('Mittlere Einkaufsdauer %.2fs' % x))
-#x = Customer.duration_cond_complete / Customer.complete
-#my_print('Mittlere Einkaufsdauer (vollständig): %.2fs' % x)
-#S = ('Bäcker', 'Metzger', 'Käse', 'Kasse')
-#for s in S:
-#    x = Customer.dropped[s] / (Customer.served[s] + Customer.dropped[s]) * 100
-#    my_print('Drop percentage at %s: %.2f' % (s, x))
 
+#--------------------------------------------------------------------------------------------------- Print Customer log
+my_print('| Simulationsende: %is' % EventQueue.time)
+my_print('| Anzahl Kunden: %i' % (Customer.count))
+my_print('| Anzahl vollständige Einkäufe %i' % Customer.complete)
+x = Customer.duration / Customer.count
+my_print(str('| Mittlere Einkaufsdauer %.2fs' % x))
+x = Customer.duration_cond_complete / Customer.complete
+my_print('| Mittlere Einkaufsdauer (vollständig): %.2fs' % x)
+S = ('Bäcker', 'Metzger', 'Käse', 'Kasse')
+for s in S:
+    x = Customer.dropped[s] / (Customer.served[s] + Customer.dropped[s]) * 100
+    my_print('| Drop percentage at %s: %.2f' % (s, x))
+
+#--------------------------------------------------------------------------------------------------- Close files
 f.close()
 fc.close()
 fs.close()
+
+eventQueue.printEnd()
