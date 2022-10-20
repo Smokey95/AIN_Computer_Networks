@@ -28,9 +28,13 @@ class EventQueue:
   def start(self):
     while len(self.q) > 0:
       ev = self.pop()
+      EventQueue.time = ev.t
+
       new_ev = ev.work(*ev.args)
       if new_ev is not None:
         self.push(new_ev)
+
+      
       
   def __str__(self):
     return "%s" % str(self.q)

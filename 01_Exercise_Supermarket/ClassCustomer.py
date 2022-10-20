@@ -1,6 +1,8 @@
 # class consists of
 # statistics variables
 # and methods as described in the problem description
+from tkinter import E
+from ClassEventQueue import EventQueue
 from ClassEvent import Event
 
 class Customer():
@@ -17,20 +19,18 @@ class Customer():
       self.name = name
       self.start = start
       self.end = 0
-      self.curr_time = self.start
       Customer.count += 1
 
 
     def begin(self):
       walk_time = self.einkaufsliste[0][0]
-      self.curr_time = self.curr_time + walk_time 
-      event = Event(self.curr_time, self.arrival, prio=1)
+      event = Event(EventQueue.time + walk_time, self.arrival, prio=1)
       return event
 
 
     def arrival(self):
 
-      print(self.curr_time)
+      print(EventQueue.time)
       #curr_store = self.einkaufsliste[0][1]
       #curr_store.queue(self)
 #
