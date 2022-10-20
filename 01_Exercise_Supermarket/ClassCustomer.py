@@ -13,6 +13,7 @@ class Customer():
     duration_cond_complete = 0
     count = 0
     
+    
     def __init__(self, einkaufsliste, name, start):
       self.einkaufsliste = einkaufsliste
       self.name = name
@@ -22,7 +23,6 @@ class Customer():
 
 
     def begin(self):
-      #print("begin at " + self.einkaufsliste[0][1].name + " at " + str(EventQueue.time))
       walk_time = self.einkaufsliste[0][0]
       station = self.einkaufsliste[0][1]
       event = [Event(EventQueue.time + walk_time, self.arrival, prio=1, args=(str(station), self.name))]
@@ -83,8 +83,6 @@ class Customer():
       
       return new_event
 
+
     def __str__(self) -> str:
-      return self.name
-      
-    def getname(self):
       return self.name
