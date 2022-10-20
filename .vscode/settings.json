@@ -1,5 +1,11 @@
 {
-  "cSpell.words": [
-    "Rechnernetze"
-  ]
+  "files.watcherExclude": {
+      "**/target": true
+  },
+  "editor.rulers": [
+      100
+  ],
+  "workbench.colorCustomizations": {
+      "editorRuler.foreground": "#cccccc1a"
+  },
 }
