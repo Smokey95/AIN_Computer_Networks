@@ -10,6 +10,12 @@ class Station():
   # please implement here
   
   def __init__(self, delay_per_item, name):
+    """
+    ### Station Constructor
+    Args:
+        delay_per_item (int): delay per item when served
+        name (str): name of the station
+    """
     self.name = name
     self.buffer = []
     self.delay_per_item = delay_per_item
