@@ -54,7 +54,7 @@ def startCustomers(einkaufsliste, name, startTime, deltaTime, maxSimulationTime)
   t = startTime
   while t < maxSimulationTime:
       kunde = Customer(list(einkaufsliste), name + str(i), t)
-      event = Event(t, kunde.begin, prio=1, args=(kunde.name))
+      event = Event(t, kunde.begin, prio=2, args=(kunde.name))
       eventQueue.push(event)
       i += 1
       t += deltaTime
@@ -78,19 +78,23 @@ Customer.dropped['Kasse'] = 0
 
 #--------------------------------------------------------------------------------------------------- Create Shopping list
 # List =          (Time Way, Name Station, Amount, max. customer)
-einkaufsliste1 = [(10, baecker, 10, 10), 
-                  (30, metzger, 5, 10), 
-                  (45, kaese, 3, 5), 
+einkaufsliste1 = [(10, baecker, 10, 100),
+                  (30, metzger, 5, 10),
+                  (45, kaese, 3, 5),
                   (60, kasse, 30, 20)]
+
 einkaufsliste2 = [(30, metzger, 2, 5),
                   (30, kasse, 3, 20),
                   (20, baecker, 3, 20)]
 
 #--------------------------------------------------------------------------------------------------- Init Customer
-#startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
-#startCustomers(einkaufsliste2, 'B', 1, 60, 30 * 60 + 1)
-startCustomers(einkaufsliste1, 'A', 0, 200, 30)
-startCustomers(einkaufsliste2, 'B', 1, 60, 30)
+
+startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
+startCustomers(einkaufsliste2, 'B', 1, 60, 30 * 60 + 1)
+#startCustomers(einkaufsliste1, 'A', 0, 20, 600 * 60 + 1)
+#startCustomers(einkaufsliste2, 'B', 1, 60, 600 * 60 + 1)
+#startCustomers(einkaufsliste1, 'A', 0, 200, 30)
+#startCustomers(einkaufsliste2, 'B', 1, 60, 30)
 
 #--------------------------------------------------------------------------------------------------- Start Simulation
 eventQueue.start()
@@ -99,10 +103,13 @@ eventQueue.start()
 my_print('| Simulationsende: %is' % EventQueue.time)
 my_print('| Anzahl Kunden: %i' % (Customer.count))
 my_print('| Anzahl vollständige Einkäufe %i' % Customer.complete)
-x = Customer.duration / Customer.count
-my_print(str('| Mittlere Einkaufsdauer %.2fs' % x))
+
+avg_time = Customer.duration / Customer.count
+my_print(str('| Mittlere Einkaufsdauer %.2fs' % avg_time))
+
 x = Customer.duration_cond_complete / Customer.complete
 my_print('| Mittlere Einkaufsdauer (vollständig): %.2fs' % x)
+
 S = ('Bäcker', 'Metzger', 'Käse', 'Kasse')
 for s in S:
     x = Customer.dropped[s] / (Customer.served[s] + Customer.dropped[s]) * 100
