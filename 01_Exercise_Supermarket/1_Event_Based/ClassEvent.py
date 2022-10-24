@@ -21,10 +21,22 @@ class Event:
       Event.counter  += 1   
     
     def __lt__(self, other):
-      return self.t < other.t
+      if self.t < other.t:
+        return True
+      elif self.t == other.t:
+        return self.prio < other.prio
+      else:
+        return False
+
     
     def __le__(self, other):
-      return self.t <= other.t
+      if self.t < other.t:
+        return True
+      elif self.t == other.t:
+        return self.prio <= other.prio
+      else:
+        return False
+
 
     def __str__(self):
       return "Event(time: %4d, prio: %3d, id: %2d, work: %7s, args: %s)" % (self.t, self.prio, self.id, self.work.__name__, self.args)

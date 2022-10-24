@@ -33,7 +33,14 @@ class Station():
     customer = self.buffer.pop(0)
     if len(self.buffer) == 0:
       self.CustomerWaiting = False
-    Customer.served[self.name] += 1
+    Customer.served[self.name] += 1 
+    #if(Customer.served.keys().__contains__(self.name)):
+    #  served_customers = Customer.served.get(self.name)
+    #  served_customers.append(customer.name)
+    #  Customer.served.update({self.name: served_customers})
+    #else:
+    #  Customer.served.update({self.name: [customer.name]})
+    #Customer.served.update({customer.name: self.name})
     return customer
 
   def leave(self):
@@ -42,10 +49,8 @@ class Station():
   def isBusy(self):
     return self.busy
 
-
   def isCustomerWaiting(self):
     return self.CustomerWaiting
-
 
   def __str__(self):
     return self.name
