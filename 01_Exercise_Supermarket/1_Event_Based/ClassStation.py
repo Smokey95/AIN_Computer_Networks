@@ -1,20 +1,23 @@
 import heapq
 
 from ClassCustomer import Customer
-# class consists of
-# name: station name
-# buffer: customer queue
-# delay_per_item: service time
-# CustomerWaiting, busy: possible states of this station
+
 class Station():
-  # please implement here
+  """
+  ### Class Station
+  Describe a station in the supermarket. Class consists of:
+    name: station name
+    buffer: customer queue
+    delay_per_item: service time
+    CustomerWaiting, busy: possible states of this station
+  """
   
   def __init__(self, delay_per_item, name):
     """
     ### Station Constructor
     Args:
-        delay_per_item (int): delay per item when served
-        name (str): name of the station
+      delay_per_item (int): delay per item when served
+      name (str): name of the station
     """
     self.name = name
     self.buffer = []
@@ -34,23 +37,19 @@ class Station():
     if len(self.buffer) == 0:
       self.CustomerWaiting = False
     Customer.served[self.name] += 1 
-    #if(Customer.served.keys().__contains__(self.name)):
-    #  served_customers = Customer.served.get(self.name)
-    #  served_customers.append(customer.name)
-    #  Customer.served.update({self.name: served_customers})
-    #else:
-    #  Customer.served.update({self.name: [customer.name]})
-    #Customer.served.update({customer.name: self.name})
     return customer
 
   def leave(self):
      return self.serve()
 
+
   def isBusy(self):
     return self.busy
 
+
   def isCustomerWaiting(self):
     return self.CustomerWaiting
+
 
   def __str__(self):
     return self.name
