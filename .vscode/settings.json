@@ -7,5 +7,6 @@
   ],
   "workbench.colorCustomizations": {
       "editorRuler.foreground": "#cccccc1a"
-  },
+},
+"codetogether.virtualCursorJoin": "ownVirtualCursor",
 }
