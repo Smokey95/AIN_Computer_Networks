@@ -7,9 +7,9 @@ from ClassEvent import Event
 
 #--------------------------------------------------------------------------------------------------- File handling
 directory_path = os.getcwd()
-f   = open(directory_path + "\\01_Exercise_Supermarket\data\supermarkt.txt", "w")
-fc  = open(directory_path + "\\01_Exercise_Supermarket\data\supermarkt_customer.txt", "w")
-fs  = open(directory_path + "\\01_Exercise_Supermarket\data\supermarkt_station.txt", "w")
+f   = open(directory_path + "\\01_Exercise_Supermarket\\1_Event_Based\data\supermarkt.txt", "w")
+fc  = open(directory_path + "\\01_Exercise_Supermarket\\1_Event_Based\data\supermarkt_customer.txt", "w")
+fs  = open(directory_path + "\\01_Exercise_Supermarket\\1_Event_Based\data\supermarkt_station.txt", "w")
 
 def my_print(msg):
   """
