@@ -1,18 +1,26 @@
 from ClassCustomer import *
 from ClassStation import *
 from threading import Thread
+from ClassUtility import *
 import time
-
-debugFactor = 1000
 
 def startCustomers(einkaufsliste, name, sT, dT, mT):
     i = 1
     t = sT
     while t < mT:
-        kunde = Customer(list(einkaufsliste), name + str(i), (t / debugFactor))
+        kunde = Customer(list(einkaufsliste), name + str(i), (t / utility.debug_factor))
         kunde.start()
         i += 1
         t += dT
+
+def printHeader():
+    #print("------ Simulation started -------")
+    print("|-------------------------------------------------------------|")
+    print("| Element     |     Value | Action                            |")
+    print("|-------------------------------------------------------------|")
+        
+printHeader()
+
 
 baecker = Station(10, 'Bäcker')
 baecker.start()
@@ -38,9 +46,14 @@ Customer.dropped['Kasse'] = 0
 einkaufsliste1 = [(10, baecker, 10, 10), (30, metzger, 5, 10), (45, kaese, 3, 5), (60, kasse, 30, 20)]
 einkaufsliste2 = [(30, metzger, 2, 5), (30, kasse, 3, 20), (20, baecker, 3, 20)]
 
-#startCustomers(einkaufsliste1, 'A', 0, 200, 200)
-startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
+startCustomers(einkaufsliste1, 'A', 0, 200, 200)
+#startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
 #+startCustomers(einkaufsliste2, 'B', 1, 60, 30 * 60 + 1)
+
+
+utility.endSimulationEv.wait()
+print("Simulation complete")
+
 #evQ.start()
 #print('Simulationsende')
 #my_print('Anzahl Kunden: %i' % (Customer.count
@@ -58,3 +71,4 @@ startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
 #f.close()
 #fc.close()
 #fs.close()
+
