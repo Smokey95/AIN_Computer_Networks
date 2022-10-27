@@ -15,13 +15,15 @@ def startCustomers(einkaufsliste, name, sT, dT, mT):
         t += dT
 
 baecker = Station(10, 'Bäcker')
-metzger = Station(30, 'Metzger')
-kaese = Station(60, 'Käse')
-kasse = Station(5, 'Kasse')
-
 baecker.start()
+
+metzger = Station(30, 'Metzger')
 metzger.start()
+
+kaese = Station(60, 'Käse')
 kaese.start()
+
+kasse = Station(5, 'Kasse')
 kasse.start()
 
 Customer.served['Bäcker'] = 0
@@ -36,11 +38,11 @@ Customer.dropped['Kasse'] = 0
 einkaufsliste1 = [(10, baecker, 10, 10), (30, metzger, 5, 10), (45, kaese, 3, 5), (60, kasse, 30, 20)]
 einkaufsliste2 = [(30, metzger, 2, 5), (30, kasse, 3, 20), (20, baecker, 3, 20)]
 
-startCustomers(einkaufsliste1, 'A', 0, 200, 200)
-#startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
+#startCustomers(einkaufsliste1, 'A', 0, 200, 200)
+startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
 #+startCustomers(einkaufsliste2, 'B', 1, 60, 30 * 60 + 1)
 #evQ.start()
-print('Simulationsende')
+#print('Simulationsende')
 #my_print('Anzahl Kunden: %i' % (Customer.count
 #                                ))
 #my_print('Anzahl vollständige Einkäufe %i' % Customer.complete)

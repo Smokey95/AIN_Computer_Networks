@@ -22,9 +22,12 @@ class Station(Thread):
     def run(self):
       
       while True:
-        
+              
         print("Station %s waiting for customers" % self.name)                                       # @todo remove after testing
         
+        if(len(self.buffer) != 0):
+          self.CustomerWaitingEv.set()
+
         self.CustomerWaitingEv.wait()
         
         print("Customer arrived at %s" % self.name)                                                 # @todo remove after testing
