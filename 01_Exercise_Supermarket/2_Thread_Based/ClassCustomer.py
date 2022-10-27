@@ -12,19 +12,16 @@ class Customer(Thread):
   duration_cond_complete = 0
   count = 0
 
-  def __init__(self, einkaufsliste, name, start_time):
+  def __init__(self, einkaufsliste, name):
     print("| Customer |     %5s | created" % name)
     Thread.__init__(self)
     self.einkaufsliste = einkaufsliste
     self.name = name
-    self.start_time = start_time
     self.serveEv = Event()
     Customer.count += 1
     
 
   def run(self):
-
-    time.sleep(self.start_time / utility.debug_factor)
 
     while(True):
 
