@@ -25,38 +25,59 @@ class Customer(Thread):
 
     while(True):
 
+      # ----------------- Check if customer is done -----------------
       if(len(self.einkaufsliste) == 0):
         self.completeCustomer()
         break
-
-
-      time.sleep(self.einkaufsliste[0][0] / utility.debug_factor)                                            #sleeps until arriving at station
-      self.einkaufsliste[0][1].CustomerWaitingEv.set()                                              #wakes up current station
-
-      serving_time = self.einkaufsliste[0][1].delay_per_item * self.einkaufsliste[0][2]             
+      
+      # ----------------- Walk to next station -----------------
+      self.printCustomerWait()
+      time.sleep(self.getCurrentWalkTime() / utility.debug_factor)                                  #sleeps until arriving at station
+      self.getCurrentStation().CustomerWaitingEv.set()                                              #wakes up current station
+      
+      # ----------------- Wait for station to be free -----------------
+      serving_time = self.getCurrentStation().delay_per_item * self.getCurrentAmount()            
       self.einkaufsliste[0][1].buffer.append((self, serving_time))                                  #queues itself into the buffer of the current station
-
-      while(True):
         
-        self.printCustomerWait()
-        self.serveEv.wait()
+      self.serveEv.wait()
+      
+      # ----------------- Customer is served -----------------
+      if(self.serveEv.is_set()):
+        self.serveEv.clear()
         
-        if(self.serveEv.is_set()):
-          self.serveEv.clear()
-          
-          self.printCustomerServed()
-          self.einkaufsliste.pop(0)                                                               #removes itself from the einkaufsliste
-          break
+        self.printCustomerServed()
+        self.einkaufsliste.pop(0)                                                               #removes itself from the einkaufsliste
+        
   
+  def getCurrentWalkTime(self):
+    return self.einkaufsliste[0][0]
   
+  def getCurrentStation(self):
+    return self.einkaufsliste[0][1]
+  
+  def getCurrentAmount(self):
+    return self.einkaufsliste[0][2]
+    
   def printCustomerWait(self):
-    print("| Customer |     %5s | walking to: %s" % (self.name, self.einkaufsliste[0][1].name))
+    print("| Customer |     %5s | walking to: %s" % (self.name, self.getCurrentStation().name))
   
   def printCustomerServed(self):
-    print("| Customer |     %5s | served at:  %s" % (self.name, self.einkaufsliste[0][1].name))
+    print("| Customer |     %5s | served at: %s" % (self.name, self.getCurrentStation().name))
     
   def completeCustomer(self):
-    print("| Customer |     %5s | DONE" % self.name)
+    print("| Customer |     %5s | >>> DONE" % self.name)
     Customer.complete += 1
+    
+    # ----------------- Check if all customers are done -----------------
     if Customer.complete == Customer.count:
+      print("|-------------------------------------------------------------")
+      print("| >>> Simulation complete")
+      utility.endStationEv.set()
+      for station in utility.allStations:
+        print("| >>> Station %s Thread terminated" % station.name)
+        station.CustomerWaitingEv.set()
       utility.endSimulationEv.set()
+      
+      
+      
+      
