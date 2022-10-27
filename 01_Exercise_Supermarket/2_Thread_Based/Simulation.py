@@ -16,7 +16,7 @@ def startCustomers(einkaufsliste, name, sT, dT, mT):
 def printHeader():
     #print("------ Simulation started -------")
     print("|-------------------------------------------------------------")
-    print("| Element     |     Value | Action                            ")
+    print("| Element  |     Value | Action                               ")
     print("|-------------------------------------------------------------")
         
 printHeader()

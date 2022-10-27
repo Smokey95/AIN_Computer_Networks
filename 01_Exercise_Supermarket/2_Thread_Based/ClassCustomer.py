@@ -13,7 +13,7 @@ class Customer(Thread):
   count = 0
 
   def __init__(self, einkaufsliste, name, start_time):
-    print("| Customer    |     %5s | created" % name)
+    print("| Customer |     %5s | created" % name)
     Thread.__init__(self)
     self.einkaufsliste = einkaufsliste
     self.name = name
@@ -53,13 +53,13 @@ class Customer(Thread):
   
   
   def printCustomerWait(self):
-    print("| Customer    |     %5s | walking to: %s" % (self.name, self.einkaufsliste[0][1].name))
+    print("| Customer |     %5s | walking to: %s" % (self.name, self.einkaufsliste[0][1].name))
   
   def printCustomerServed(self):
-    print("| Customer    |     %5s | served at:  %s" % (self.name, self.einkaufsliste[0][1].name))
+    print("| Customer |     %5s | served at:  %s" % (self.name, self.einkaufsliste[0][1].name))
     
   def completeCustomer(self):
-    print("| Customer    |     %5s | DONE" % self.name)
+    print("| Customer |     %5s | DONE" % self.name)
     Customer.complete += 1
     if Customer.complete == Customer.count:
       utility.endSimulationEv.set()
