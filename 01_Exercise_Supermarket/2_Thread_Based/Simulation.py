@@ -15,9 +15,9 @@ def startCustomers(einkaufsliste, name, sT, dT, mT):
 
 def printHeader():
     #print("------ Simulation started -------")
-    print("|-------------------------------------------------------------|")
-    print("| Element     |     Value | Action                            |")
-    print("|-------------------------------------------------------------|")
+    print("|-------------------------------------------------------------")
+    print("| Element     |     Value | Action                            ")
+    print("|-------------------------------------------------------------")
         
 printHeader()
 
@@ -46,8 +46,8 @@ Customer.dropped['Kasse'] = 0
 einkaufsliste1 = [(10, baecker, 10, 10), (30, metzger, 5, 10), (45, kaese, 3, 5), (60, kasse, 30, 20)]
 einkaufsliste2 = [(30, metzger, 2, 5), (30, kasse, 3, 20), (20, baecker, 3, 20)]
 
-startCustomers(einkaufsliste1, 'A', 0, 200, 200)
-#startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
+#startCustomers(einkaufsliste1, 'A', 0, 200, 200)
+startCustomers(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
 #+startCustomers(einkaufsliste2, 'B', 1, 60, 30 * 60 + 1)
 
 

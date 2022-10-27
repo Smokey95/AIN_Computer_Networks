@@ -4,6 +4,6 @@ import time
 
 class utility:
   
-  debug_factor = 100
+  debug_factor = 1000
   
   endSimulationEv = Event()
