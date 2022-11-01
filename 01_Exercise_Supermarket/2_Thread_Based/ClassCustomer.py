@@ -36,8 +36,9 @@ class Customer(Thread):
       self.getCurrentStation().CustomerWaitingEv.set()                                              #wakes up current station
       
       # ----------------- Wait for station to be free -----------------
-      serving_time = self.getCurrentStation().delay_per_item * self.getCurrentAmount()            
-      self.einkaufsliste[0][1].buffer.append((self, serving_time))                                  #queues itself into the buffer of the current station
+      serving_time = self.getCurrentStation().delay_per_item * self.getCurrentAmount()
+      curr_station = self.getCurrentStation()
+      curr_station.queueCustomer(self, serving_time)                                                #queueing customer at station buffer                       
         
       self.serveEv.wait()
       
@@ -46,7 +47,7 @@ class Customer(Thread):
         self.serveEv.clear()
         
         self.printCustomerServed()
-        self.einkaufsliste.pop(0)                                                               #removes itself from the einkaufsliste
+        self.einkaufsliste.pop(0)                                                                   #removes itself from the einkaufsliste
         
   
   def getCurrentWalkTime(self):

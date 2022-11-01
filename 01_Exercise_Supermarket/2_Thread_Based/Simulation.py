@@ -79,8 +79,12 @@ einkaufsliste1 = [(10, baecker, 10, 10), (30, metzger, 5, 10), (45, kaese, 3, 5)
 einkaufsliste2 = [(30, metzger, 2, 5), (30, kasse, 3, 20), (20, baecker, 3, 20)]
 
 # ----------------- create customers -----------------
-createCustomerAThread = AddCustomer(einkaufsliste1, 'A', 0, 200, 400)
-createCustomerBThread = AddCustomer(einkaufsliste2, 'B', 1, 60, 120)
+# createCustomerAThread = AddCustomer(einkaufsliste1, 'A', 0, 200, 400)
+# createCustomerBThread = AddCustomer(einkaufsliste2, 'B', 0, 60, 120)
+
+createCustomerAThread = AddCustomer(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
+createCustomerBThread = AddCustomer(einkaufsliste2, 'B', 0, 60, 30 * 60 + 1)
+
 
 createCustomerAThread.start()
 createCustomerBThread.start()

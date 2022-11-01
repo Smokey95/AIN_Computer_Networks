@@ -1,4 +1,4 @@
-from threading import Thread, Event
+from threading import Thread, Event, Lock
 import time
 
 from ClassCustomer import Customer
@@ -16,6 +16,7 @@ class Station(Thread):
       Thread.__init__(self)
       self.name = name
       self.buffer = []
+      self.bufferLock = Lock()
       self.delay_per_item = delay_per_item
       self.CustomerWaitingEv = Event()
       self.busy = False
@@ -24,7 +25,7 @@ class Station(Thread):
       
       while True:
         
-        if(len(self.buffer) != 0):
+        if(self.getCurrentBufferLength() != 0):
           self.CustomerWaitingEv.set()
         
         # ----------------- waiting for customer -----------------  
@@ -39,12 +40,39 @@ class Station(Thread):
           self.busy = True
           self.CustomerWaitingEv.clear()
 
-          curr_customer = self.buffer.pop(0)                                                        # curr_customer = tuple with (customer serveEv, serve time)
-          print("| Station  |  %8s | Customer arrived: %s" % (self.name, curr_customer[0].name))                                                 # @todo remove after testing
-          time.sleep(curr_customer[1] / utility.debug_factor)                                                # sleeping until customer is finished
+          curr_customer = self.getCurrentCustomer()                                                 # curr_customer = tuple with (customer serveEv, serve time)
+          print("| Station  |  %8s | Customer arrived: %s" % (self.name, curr_customer[0].name))
+          time.sleep(curr_customer[1] / utility.debug_factor)                                       # sleeping until customer is finished
 
           curr_customer[0].serveEv.set()                                                            # setting event to notify customer that he is finished
         # ----------------- customer timeout -----------------  
         else:
           print("| Station  |  %8s | TIMEOUT" % self.name)
           break
+    
+      
+    def getCurrentCustomer(self):
+      '''
+      returns the first customer in the buffer
+      '''
+      self.bufferLock.acquire()
+      curr_customer = self.buffer.pop(0)
+      self.bufferLock.release()
+      return curr_customer
+      
+    def getCurrentBufferLength(self):
+      '''
+      returns the length of the buffer
+      '''
+      self.bufferLock.acquire()
+      curr_len = len(self.buffer)
+      self.bufferLock.release()
+      return curr_len
+      
+    def queueCustomer(self, customer, serving_time):
+      '''
+      queues customer at station buffer
+      '''
+      self.bufferLock.acquire()
+      self.buffer.append((customer, serving_time))
+      self.bufferLock.release()
