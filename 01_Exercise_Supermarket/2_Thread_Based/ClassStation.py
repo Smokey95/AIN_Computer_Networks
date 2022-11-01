@@ -19,6 +19,7 @@ class Station(Thread):
       self.bufferLock = Lock()
       self.delay_per_item = delay_per_item
       self.CustomerWaitingEv = Event()
+      self.cweLock = Lock()
       self.busy = False
   
     def run(self):
@@ -26,7 +27,7 @@ class Station(Thread):
       while True:
         
         if(self.getCurrentBufferLength() != 0):
-          self.CustomerWaitingEv.set()
+          self.setCustomerWaitingEvent()
         
         # ----------------- waiting for customer -----------------  
         print("| Station  |  %8s | waiting for customer" % self.name)
@@ -38,7 +39,7 @@ class Station(Thread):
         # ----------------- customer arrived -----------------
         if(self.CustomerWaitingEv.is_set()):
           self.busy = True
-          self.CustomerWaitingEv.clear()
+          self.clearCustomerWaitingEvent()
 
           curr_customer = self.getCurrentCustomer()                                                 # curr_customer = tuple with (customer serveEv, serve time)
           print("| Station  |  %8s | Customer arrived: %s" % (self.name, curr_customer[0].name))
@@ -76,3 +77,20 @@ class Station(Thread):
       self.bufferLock.acquire()
       self.buffer.append((customer, serving_time))
       self.bufferLock.release()
+      
+    def setCustomerWaitingEvent(self):
+      '''
+      sets the CustomerWaitingEv event
+      '''
+      self.cweLock.acquire()
+      self.CustomerWaitingEv.set()
+      self.cweLock.release()
+      
+    def clearCustomerWaitingEvent(self):
+      '''
+      clears the CustomerWaitingEv event
+      '''
+      self.cweLock.acquire()
+      self.CustomerWaitingEv.clear()
+      self.cweLock.release()
+    

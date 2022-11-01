@@ -1,3 +1,4 @@
+from asyncio.windows_events import INFINITE
 from threading import Thread, Event
 
 import time

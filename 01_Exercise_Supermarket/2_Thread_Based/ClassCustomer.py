@@ -33,8 +33,9 @@ class Customer(Thread):
       # ----------------- Walk to next station -----------------
       self.printCustomerWait()
       time.sleep(self.getCurrentWalkTime() / utility.debug_factor)                                  #sleeps until arriving at station
-      self.getCurrentStation().CustomerWaitingEv.set()                                              #wakes up current station
-      
+      curr_station = self.getCurrentStation()
+      curr_station.setCustomerWaitingEvent()                                                        #wakes up current station
+                                     
       # ----------------- Wait for station to be free -----------------
       serving_time = self.getCurrentStation().delay_per_item * self.getCurrentAmount()
       curr_station = self.getCurrentStation()
