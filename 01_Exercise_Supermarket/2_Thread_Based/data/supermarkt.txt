@@ -1,0 +1,3 @@
+| Simulationsende: 
+| Anzahl Kunden: 4
+| Anzahl vollständige Einkäufe 4

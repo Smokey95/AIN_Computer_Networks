@@ -1,9 +1,24 @@
+import os
+
 from ClassCustomer import *
 from ClassStation import *
 from threading import Thread
 from ClassUtility import *
 import time
 
+#--------------------------------------------------------------------------------------------------- File handling
+directory_path = os.getcwd()
+f   = open(directory_path + "\\01_Exercise_Supermarket\\2_Thread_Based\data\supermarkt.txt", "w")
+fc  = open(directory_path + "\\01_Exercise_Supermarket\\2_Thread_Based\data\supermarkt_customer.txt", "w")
+fs  = open(directory_path + "\\01_Exercise_Supermarket\\2_Thread_Based\data\supermarkt_station.txt", "w")
+
+
+def my_print(msg):
+  """
+  #### print on console and into supermarket log
+  """
+  print(msg)
+  f.write(msg + '\n')
         
 class AddCustomer(Thread):
   '''
@@ -79,20 +94,27 @@ einkaufsliste1 = [(10, baecker, 10, 10), (30, metzger, 5, 10), (45, kaese, 3, 5)
 einkaufsliste2 = [(30, metzger, 2, 5), (30, kasse, 3, 20), (20, baecker, 3, 20)]
 
 # ----------------- create customers -----------------
-# createCustomerAThread = AddCustomer(einkaufsliste1, 'A', 0, 200, 400)
-# createCustomerBThread = AddCustomer(einkaufsliste2, 'B', 0, 60, 120)
+createCustomerAThread = AddCustomer(einkaufsliste1, 'A', 0, 200, 400)
+createCustomerBThread = AddCustomer(einkaufsliste2, 'B', 0, 60, 120)
 
-createCustomerAThread = AddCustomer(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
-createCustomerBThread = AddCustomer(einkaufsliste2, 'B', 0, 60, 30 * 60 + 1)
+#createCustomerAThread = AddCustomer(einkaufsliste1, 'A', 0, 200, 30 * 60 + 1)
+#createCustomerBThread = AddCustomer(einkaufsliste2, 'B', 0, 60, 30 * 60 + 1)
 
-
+starttime = time.time_ns()
 createCustomerAThread.start()
 createCustomerBThread.start()
 
 
 utility.endSimulationEv.wait()
-
+endtime = time.time_ns()
+duration = endtime - starttime #@todo before terminating tasks? (Overload)
 #@todo printout stats
 
 print("| >>> Main Thread terminated")
+print("| >>> INFO: Simulation ended after " + str(duration / 1000000000) + " seconds")
+printLine()
 
+#--------------------------------------------------------------------------------------------------- Print Customer log
+my_print('| Simulationsende: ')#%is' % EventQueue.time)
+my_print('| Anzahl Kunden: %i' % (Customer.count))
+my_print('| Anzahl vollständige Einkäufe %i' % Customer.complete)

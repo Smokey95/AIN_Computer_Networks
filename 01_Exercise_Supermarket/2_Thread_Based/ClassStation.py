@@ -44,7 +44,7 @@ class Station(Thread):
           curr_customer = self.getCurrentCustomer()                                                 # curr_customer = tuple with (customer serveEv, serve time)
           print("| Station  |  %8s | Customer arrived: %s" % (self.name, curr_customer[0].name))
           time.sleep(curr_customer[1] / utility.debug_factor)                                       # sleeping until customer is finished
-
+          Customer.served[self.name] += 1                                                           # increment served counter
           curr_customer[0].serveEv.set()                                                            # setting event to notify customer that he is finished
         # ----------------- customer timeout -----------------  
         else:
