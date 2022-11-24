@@ -15,12 +15,12 @@ class Customer():
     
     
     def __init__(self, einkaufsliste, name, start):
-      self.einkaufsliste = einkaufsliste
-      self.name = name
-      self.start = start
-      self.end = 0
-      self.skipped = False
-      Customer.count += 1
+      self.einkaufsliste  = einkaufsliste
+      self.name           = name
+      self.start          = start
+      self.end            = 0
+      self.skipped        = False
+      Customer.count      += 1
 
 
     def begin(self):
@@ -28,7 +28,7 @@ class Customer():
       curr_station    = self.getStation()
       curr_time       = self.getCurrentTime()
       
-      return [Event(curr_time + curr_walk_time, self.arrival, prio=3, args=(str(curr_station), self.name))]
+      return [self.createSelfArrivalEvent(curr_time + curr_walk_time, curr_station)]
 
 
     def arrival(self):
@@ -64,24 +64,24 @@ class Customer():
       
       new_event = None
       
-      curr_station = self.getStation()
+      curr_station = self.getStation()                                                              # get current station for later waiting queue check
       self.einkaufsliste.pop(0)                                                                     # remove current station from list
       
       if len(self.einkaufsliste) != 0:                                                              # check if there are more stations to visit
-        walk_time = self.getWalkTime()
-        new_event = [Event(EventQueue.time + walk_time, self.arrival, prio=3, args=(str(self.einkaufsliste[0][1]), self.name))]
+        walk_time     = self.getWalkTime()
+        curr_time     = self.getCurrentTime()
+        next_station  = self.getStation()
+        new_event     = [self.createSelfArrivalEvent(curr_time + walk_time, next_station)]
       else:
         self.end = EventQueue.time
         
         if not self.skipped:
-          Customer.complete += 1
+          Customer.complete               += 1
           Customer.duration_cond_complete += self.end - self.start
-          Customer.duration += self.end - self.start
+          Customer.duration               += self.end - self.start
         else:
-          Customer.duration += self.end - self.start
+          Customer.duration               += self.end - self.start
         new_event = None
-        #if self.end - self.start > 60:
-        #  Customer.duration_cond_complete += self.end - self.start
       
       if(curr_station.isCustomerWaiting()):
         next_customer = curr_station.leave()
@@ -114,5 +114,11 @@ class Customer():
     def getMaxCustomer(self):
       return self.einkaufsliste[0][3]
     
+    def createSelfArrivalEvent(self, time, curr_station):
+      return Event(time, self.arrival, prio=3, args=(str(curr_station),self.name))
+    
+    def createSelfLeavingEvent(self, time, curr_station):
+      return Event(time, self.leaving, prio=1, args=(str(curr_station), self.name))
+      
     def __str__(self) -> str:
       return self.name
