@@ -1,0 +1,70 @@
+PS C:\Users\simon> ping www.htw-berlin.de -l 32
+
+Pinging moehre.htw-berlin.de [141.45.7.250] with 32 bytes of data:
+Reply from 141.45.7.250: bytes=32 time=30ms TTL=236
+Reply from 141.45.7.250: bytes=32 time=33ms TTL=236
+Reply from 141.45.7.250: bytes=32 time=37ms TTL=236
+Reply from 141.45.7.250: bytes=32 time=32ms TTL=236
+
+Ping statistics for 141.45.7.250:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 30ms, Maximum = 37ms, Average = 33ms
+PS C:\Users\simon> ping www.htw-berlin.de -l 64
+
+Pinging moehre.htw-berlin.de [141.45.7.250] with 64 bytes of data:
+Reply from 141.45.7.250: bytes=64 time=29ms TTL=236
+Reply from 141.45.7.250: bytes=64 time=33ms TTL=236
+Reply from 141.45.7.250: bytes=64 time=34ms TTL=236
+Reply from 141.45.7.250: bytes=64 time=34ms TTL=236
+
+Ping statistics for 141.45.7.250:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 29ms, Maximum = 34ms, Average = 32ms
+PS C:\Users\simon> ping www.htw-berlin.de -l 128
+
+Pinging moehre.htw-berlin.de [141.45.7.250] with 128 bytes of data:
+Reply from 141.45.7.250: bytes=128 time=30ms TTL=236
+Reply from 141.45.7.250: bytes=128 time=46ms TTL=236
+Reply from 141.45.7.250: bytes=128 time=32ms TTL=236
+Reply from 141.45.7.250: bytes=128 time=33ms TTL=236
+
+Ping statistics for 141.45.7.250:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 30ms, Maximum = 46ms, Average = 35ms
+PS C:\Users\simon> ping www.htw-berlin.de -l 256
+
+Pinging moehre.htw-berlin.de [141.45.7.250] with 256 bytes of data:
+Reply from 141.45.7.250: bytes=256 time=35ms TTL=236
+Reply from 141.45.7.250: bytes=256 time=33ms TTL=236
+Reply from 141.45.7.250: bytes=256 time=31ms TTL=236
+Reply from 141.45.7.250: bytes=256 time=47ms TTL=236
+
+Ping statistics for 141.45.7.250:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 31ms, Maximum = 47ms, Average = 36ms
+PS C:\Users\simon> ping www.htw-berlin.de -l 512
+
+Pinging moehre.htw-berlin.de [141.45.7.250] with 512 bytes of data:
+Reply from 141.45.7.250: bytes=512 time=31ms TTL=236
+Reply from 141.45.7.250: bytes=512 time=33ms TTL=236
+Reply from 141.45.7.250: bytes=512 time=34ms TTL=236
+Reply from 141.45.7.250: bytes=512 time=34ms TTL=236
+
+Ping statistics for 141.45.7.250:
+    Packets: Sent = 4, Received = 4, Lost = 0 (0% loss),
+Approximate round trip times in milli-seconds:
+    Minimum = 31ms, Maximum = 34ms, Average = 33ms
+PS C:\Users\simon> ping www.htw-berlin.de -l 1024
+
+Pinging moehre.htw-berlin.de [141.45.7.250] with 1024 bytes of data:
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 141.45.7.250:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
