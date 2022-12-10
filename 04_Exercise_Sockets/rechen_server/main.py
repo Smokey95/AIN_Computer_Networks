@@ -10,3 +10,6 @@ if __name__ == '__main__':
     server.start()
     client = client_socket(port)
     client.start()
+
+    server.join()
+    client.join()
