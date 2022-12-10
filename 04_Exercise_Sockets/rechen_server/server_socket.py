@@ -67,5 +67,3 @@ class server_socket(Thread):
             self.result = num_arr[0]
             for n in num_arr[1:]:
                 self.result /= n
-
-        print('Server calculated: ', self.result)
