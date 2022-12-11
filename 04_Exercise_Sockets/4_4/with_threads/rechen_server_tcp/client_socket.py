@@ -39,5 +39,3 @@ class client_socket(Thread):
         #unpack result
         unpacked = unpack('if', calculation)
         print(f'From Server: ID: {unpacked[0]} Result: {unpacked[1]}')
-
-        clientSocket.close()

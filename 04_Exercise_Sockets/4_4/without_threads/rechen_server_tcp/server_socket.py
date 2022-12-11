@@ -57,7 +57,3 @@ while True:
     #send result in format <id><result>
     packed_result = pack('if', int(calculation_params[0]), result)
     connectionSocket.send(packed_result)
-
-    connectionSocket.close()
-    break
-

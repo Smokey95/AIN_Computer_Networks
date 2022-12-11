@@ -7,6 +7,9 @@ inp = input('Enter calculation: ')
 
 #parse inp string
 cutted = inp[1:-1]
+#<1><add><5><1><2><3><4><5>
+#1 add 3 1 2 3
+
 splitted_inp = cutted.split('><')
 
 #variables
@@ -15,14 +18,21 @@ operation   = splitted_inp[1]
 count       = int(splitted_inp[2])
 num_arr     = list(map(int, splitted_inp[3:]))
 
+#pack(i3si2i)
+#pack(i3si5i)
+
+
 format = 'i' + str(len(operation)) + 'si' + str(count) + 'i'
 packed_operation = pack(format, id, operation.encode(), count, *num_arr)
 
 clientSocket = socket(AF_INET, SOCK_STREAM)
-clientSocket.connect(('localhost', server_port))
+clientSocket.connect(('141.37.204.7', server_port))
 
 #sending host format
 clientSocket.send(format.encode('utf-8'))
+
+#check for response from server timeout after 5 seconds
+clientSocket.settimeout(5)
 check = clientSocket.recv(1024)
 print('From Server: ', check.decode('utf-8'))
 
