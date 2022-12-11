@@ -1,0 +1,23 @@
+telnet
+
+open asmtp.htwg-konstanz.de 587
+
+ehlo asmtp.htwg-konstanz.de
+
+auth login
+
+cm5ldGlu
+
+VWViZW44ZnVlcjhSTg==
+
+mail from: <rnetin@htwg-konstanz.de>
+
+rcpt to: <larsbuerger1@gmail.com>
+
+data
+
+Subject: Test
+
+Test
+
+.
