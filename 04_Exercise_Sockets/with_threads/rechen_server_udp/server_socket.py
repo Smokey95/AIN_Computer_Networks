@@ -11,22 +11,19 @@ class server_socket(Thread):
     def __init__(self, server_port):
         Thread.__init__(self)
         self.server_port = server_port
-        self.serverSocket = socket(AF_INET, SOCK_STREAM)
-        self.serverSocket.bind(('', server_port))
-        self.serverSocket.listen(1)
+        self.serverSocket = socket(AF_INET, SOCK_DGRAM)
+        self.serverSocket.bind(('localhost', server_port))
         self.calculation_params = None
         self.result = 0
         print("The server is ready to receive")
 
     def run(self):
         while True:
-            connectionSocket, addr = self.serverSocket.accept()
-
-            format = connectionSocket.recv(1024)
+            format, clientAddr = self.serverSocket.recvfrom(2048)
             print('Server received format: ', format.decode('utf-8'))
-            connectionSocket.send('ok'.encode('utf-8'))
+            self.serverSocket.sendto('ok'.encode('utf-8'), clientAddr)
 
-            calc_string = connectionSocket.recv(1024)
+            calc_string, clientAdrr = self.serverSocket.recvfrom(2048)
             #unpack input with recived format
             unpacked = unpack(format.decode('utf-8'), calc_string)
             self.calculation_params = list(unpacked)
@@ -39,9 +36,9 @@ class server_socket(Thread):
 
             #send result in format <id><result>
             packed_result = pack('if', int(self.calculation_params[0]), self.result)
-            connectionSocket.send(packed_result)
+            self.serverSocket.sendto(packed_result, clientAdrr)
 
-            connectionSocket.close()
+            self.serverSocket.close()
             break
 
     def calculate_result(self):
