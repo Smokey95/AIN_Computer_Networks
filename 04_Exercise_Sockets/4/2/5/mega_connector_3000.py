@@ -1,41 +1,26 @@
+#udp client
+
 from socket import *
 from threading import Thread
 from struct import unpack, pack
 
-class client_socket(Thread):
+class UdpClient(Thread):
     def __init__(self, server_port):
         Thread.__init__(self)
         self.server_port = server_port
+        self.message = 'ECHO from UDP'
 
     def run(self):
-        inp = input('Enter calculation: ')
 
-        #parse inp string
-        cutted = inp[1:-1]
-        splitted_inp = cutted.split('><')
+        client_socket = socket(AF_INET, SOCK_DGRAM)
+        client_socket.connect(('localhost', self.server_port))
 
-        #variables
-        id          = int(splitted_inp[0])
-        operation   = splitted_inp[1]
-        count       = int(splitted_inp[2])
-        num_arr     = list(map(int, splitted_inp[3:]))
+        #sending message to server
+        print(f'Sending message from UDP')
+        client_socket.sendto(self.message.encode('utf-8'), ('localhost', self.server_port))
 
-        format = 'i' + str(len(operation)) + 'si' + str(count) + 'i'
-        packed_operation = pack(format, id, operation.encode(), count, *num_arr)
+        #receiving answer from server
+        recv = client_socket.recv(2048)
+        print(f'From Server: {recv.decode()}')
 
-        clientSocket = socket(AF_INET, SOCK_STREAM)
-        clientSocket.connect(('localhost', self.server_port))
-
-        #sending host format
-        clientSocket.send(format.encode('utf-8'))
-        check = clientSocket.recv(1024)
-        print('From Server: ', check.decode('utf-8'))
-
-        #sending calculation
-        operation = inp.encode('utf-8')
-        clientSocket.send(packed_operation)
-        calculation = clientSocket.recv(1024)
-
-        #unpack result
-        unpacked = unpack('if', calculation)
-        print(f'From Server: ID: {unpacked[0]} Result: {unpacked[1]}')
+        client_socket.close()

@@ -4,66 +4,55 @@ from threading import Thread
 from struct import unpack, pack
 import time
 
-server_port = 12000
 
-
-class server_socket(Thread):
+class HybridServer(Thread):
     def __init__(self, server_port):
         Thread.__init__(self)
         self.server_port = server_port
-        self.serverSocket = socket(AF_INET, SOCK_STREAM)
-        self.serverSocket.bind(('localhost', server_port))
-        self.serverSocket.listen(1)
+        self.tdp_socket = socket(AF_INET, SOCK_STREAM)
+        self.udp_socket = socket(AF_INET, SOCK_DGRAM)
+        self.tdp_socket.bind(('localhost', self.server_port))
+        self.udp_socket.bind(('localhost', self.server_port))
+        self.tdp_socket.listen(1)
         self.calculation_params = None
         self.result = 0
         print("The server is ready to receive")
 
-    def run(self):
+
+    def run_udp(self):      
         while True:
-            connectionSocket, addr = self.serverSocket.accept()
+            message, clientAddress = self.udp_socket.recvfrom(2048)
+            print('Server received format: ', message.decode('utf-8'))
+            self.udp_socket.sendto('ok'.encode('utf-8'), clientAddress)
 
-            format = connectionSocket.recv(1024)
-            print('Server received format: ', format.decode('utf-8'))
-            connectionSocket.send('ok'.encode('utf-8'))
-
-            calc_string = connectionSocket.recv(1024)
-            #unpack input with recived format
-            unpacked = unpack(format.decode('utf-8'), calc_string)
-            self.calculation_params = list(unpacked)
-            print('Server received calculation: ', unpacked)
-            print('Server calculating...')
-
-            #calculation
-            self.calculate_result()
-
-
-            #send result in format <id><result>
-            packed_result = pack('if', int(self.calculation_params[0]), self.result)
-            connectionSocket.send(packed_result)
-
-            connectionSocket.close()
             break
 
-    def calculate_result(self):
-        id = self.calculation_params[0]
-        operation = self.calculation_params[1].decode('utf-8')
-        count = self.calculation_params[2]
-        num_arr = self.calculation_params[3:]
 
-        if operation == 'add':
-            for n in num_arr:
-                self.result += n
+    def run_tcp(self):
+        while True:
+            connectionSocket, addr = self.tdp_socket.accept()
+            msg = connectionSocket.recv(1024)
+            print('Server received format: ', msg.decode('utf-8'))
             
-        elif operation == 'sub':
-            for n in num_arr:
-                self.result -= n
+            connectionSocket.send('ok'.encode('utf-8'))
+            connectionSocket.close()
+            
+            #terminate on keyboard interrupt
+            break
 
-        elif operation == 'mul':
-            self.result = 1
-            for n in num_arr:
-                self.result *= n
 
-        elif operation == 'div':
-            self.result = num_arr[0]
-            for n in num_arr[1:]:
-                self.result /= n
+    def run(self):
+        #create two threads that run the run_tcp and run_udp methods
+        print('Starting udp thread')
+        udp_thread = Thread(target=self.run_udp)
+        udp_thread.start()
+
+        print('Starting tcp thread')
+        tcp_thread = Thread(target=self.run_tcp)
+        tcp_thread.start()
+
+        udp_thread.join()
+        tcp_thread.join()
+    
+    
+    
