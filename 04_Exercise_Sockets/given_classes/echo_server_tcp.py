@@ -1,7 +1,7 @@
 import socket
 import time
 
-My_IP = '127.0.0.1'
+My_IP = '127.0.0.69'
 My_PORT = 50000
 server_activity_period=30
 
