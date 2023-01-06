@@ -16,7 +16,8 @@ parser.add_argument('-A' ,'--clientAddress', type=str, default='127.0.0.96', hel
 parser.add_argument('-L', '--lossRate', type=float, default=0.0, help='Loss Rate')
 
 parser.add_argument('-d', '--debug', action='store_true', default=False, help='Debug Mode')
-
+parser.add_argument('-s', '--suppress', action='store_true', default=False, help='Suppress Mode')
+parser.add_argument('-t', '--timeout', type=int, default=1000, help='Timeout')
 
 # -------------------------------------------------------------------------------------------------- Main
 if __name__ == '__main__':
@@ -31,23 +32,35 @@ if __name__ == '__main__':
   # Remote Port:    12001
   # Remote Address: localhost
   # Server should be listening after creation (see lossy_udp_socket.py Thread initialization)
-  serverSocket = go_back_n_socket(args.serverPort , args.clientPort, '127.0.0.1', debugFlag=args.debug)
+  serverSocket = go_back_n_socket(args.serverPort , 
+                                  args.clientPort, 
+                                  '127.0.0.1', 
+                                  PLR=args.lossRate,
+                                  timeout=args.timeout,
+                                  debugFlag=args.debug,
+                                  suppressFlag=args.suppress)
   
   # Create a client socket
   # Local Port:     12001
   # Remote Port:    12000
   # Remote Address: localhost
-  clientSocket = go_back_n_socket(args.clientPort, args.serverPort, args.clientAddress, debugFlag=args.debug)
+  clientSocket = go_back_n_socket(args.clientPort, 
+                                  args.serverPort, 
+                                  args.clientAddress,
+                                  PLR=args.lossRate, 
+                                  timeout=args.timeout,
+                                  debugFlag=args.debug,
+                                  suppressFlag=args.suppress)
   
   # Send msg to server
   with open('testdata.txt', 'r') as f:
-    msg = f.read()
+    msg = f.read(257500)
   clientSocket.send(msg)
-  
+
   # Wait for server to receive msg
-  sleep(1)
+  sleep(5)
   
   # Terminate sockets
   print('MAIN INFO  | Terminating sockets')
-  serverSocket.sock.stop()
-  clientSocket.sock.stop()
+  serverSocket.lossy_udp_sock.stop()
+  clientSocket.lossy_udp_sock.stop()
