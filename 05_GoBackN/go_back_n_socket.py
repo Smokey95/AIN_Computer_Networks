@@ -12,6 +12,7 @@ class go_back_n_socket():
   goBackNOffsetMasterImpl300VarName = 0
   currPackage = 0
   expectedPackage = 0
+  resendCounter = 0
   
 
   def __init__(self, localPort, remotePort, remoteAddress, PLR=0.1, segmentSize=1000, windowSize=10, debugFlag=False, suppressFlag=False, timeout=1000):
@@ -26,6 +27,7 @@ class go_back_n_socket():
     self.headerSize = 8
     self.timeout = timeout / 1000
     self.timer = time.time()
+    self.startTimer = time.time()
     
     
 
@@ -52,6 +54,7 @@ class go_back_n_socket():
 
       if(time.time() - self.timer > self.timeout):
         print('SOCK DEBUG | ERROR: Timeout Go-Back-N!!!') if self.debugFlag else None
+        go_back_n_socket.resendCounter += 1
         go_back_n_socket.currOffset = go_back_n_socket.currPackage - go_back_n_socket.expectedPackage
         go_back_n_socket.currPackage = go_back_n_socket.expectedPackage
         
@@ -67,8 +70,8 @@ class go_back_n_socket():
           self.timer = time.time()
           go_back_n_socket.currOffset += 1
           go_back_n_socket.currPackage += 1
-          print('SOCK DEBUG | Current Offset: ', go_back_n_socket.currOffset)
-
+          print('SOCK DEBUG | Current Offset: ', go_back_n_socket.currOffset) if self.debugFlag else None
+          
             
   def receive(self, packet):
     msg = packet.decode('utf-8')
