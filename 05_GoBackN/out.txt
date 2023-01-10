@@ -1,0 +1,403 @@
+MAIN INFO  | Starting main.py
+SOCK DEBUG | Message length:  40000
+SOCK DEBUG | Number of segments:  41
+SOCK DEBUG | Sending segment with ID: [00000000]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  1
+SOCK DEBUG | Sending segment with ID: [00000001]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[0]
+SOCK DEBUG | Received segment with ID: [00000000]
+SOCK DEBUG | Current ID:  0
+SOCK DEBUG | Expected ID:  0
+SOCK DEBUG | Current Offset:  1
+LOSSY UDP  | Received packet with length: 1000 ID[1]
+SOCK DEBUG | Received segment with ID: [00000001]
+SOCK DEBUG | Current ID:  1
+SOCK DEBUG | Expected ID:  1
+SOCK DEBUG | Current Offset:  0
+SOCK DEBUG | Current Offset:  0
+SOCK DEBUG | Sending segment with ID: [00000002]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  1
+SOCK DEBUG | Sending segment with ID: [00000003]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[2]
+SOCK DEBUG | Received segment with ID: [00000002]
+SOCK DEBUG | Current ID:  2
+SOCK DEBUG | Expected ID:  2
+SOCK DEBUG | Current Offset:  1
+LOSSY UDP  | Dropped packet with length: 1000 ID[3]
+SOCK DEBUG | Current Offset:  1
+SOCK DEBUG | Sending segment with ID: [00000004]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  2
+SOCK DEBUG | Sending segment with ID: [00000005]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  3
+SOCK DEBUG | Sending segment with ID: [00000006]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[4]
+SOCK DEBUG | Received segment with ID: [00000004]
+SOCK DEBUG | Current ID:  4
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  3
+LOSSY UDP  | Received packet with length: 1000 ID[5]
+SOCK DEBUG | Received segment with ID: [00000005]
+SOCK DEBUG | Current ID:  5
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  3
+SOCK DEBUG | Current Offset:  4
+SOCK DEBUG | Sending segment with ID: [00000007]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[6]
+SOCK DEBUG | Received segment with ID: [00000006]
+SOCK DEBUG | Current ID:  6
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  4
+LOSSY UDP  | Received packet with length: 1000 ID[7]
+SOCK DEBUG | Received segment with ID: [00000007]
+SOCK DEBUG | Current ID:  7
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  4
+SOCK DEBUG | Current Offset:  5
+SOCK DEBUG | Sending segment with ID: [00000008]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  6
+SOCK DEBUG | Sending segment with ID: [00000009]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  7
+SOCK DEBUG | Sending segment with ID: [00000010]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[8]
+SOCK DEBUG | Received segment with ID: [00000008]
+SOCK DEBUG | Current ID:  8
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  7
+LOSSY UDP  | Received packet with length: 1000 ID[9]
+SOCK DEBUG | Received segment with ID: [00000009]
+SOCK DEBUG | Current ID:  9
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  7
+SOCK DEBUG | Current Offset:  8
+SOCK DEBUG | Sending segment with ID: [00000011]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[10]
+SOCK DEBUG | Received segment with ID: [00000010]
+SOCK DEBUG | Current ID:  10
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  8
+LOSSY UDP  | Received packet with length: 1000 ID[11]
+SOCK DEBUG | Received segment with ID: [00000011]
+SOCK DEBUG | Current ID:  11
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  8
+SOCK DEBUG | Current Offset:  9
+SOCK DEBUG | Sending segment with ID: [00000012]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  10
+LOSSY UDP  | Received packet with length: 1000 ID[12]
+SOCK DEBUG | Received segment with ID: [00000012]
+SOCK DEBUG | Current ID:  12
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  10
+SOCK DEBUG | ERROR: Timeout Go-Back-N!!!
+SOCK DEBUG | ERROR: Timeout Go-Back-N!!!
+SOCK DEBUG | Sending segment with ID: [00000003]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  1
+SOCK DEBUG | Sending segment with ID: [00000004]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  2
+SOCK DEBUG | Sending segment with ID: [00000005]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  3
+SOCK DEBUG | Sending segment with ID: [00000006]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  4
+SOCK DEBUG | Sending segment with ID: [00000007]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  5
+SOCK DEBUG | Sending segment with ID: [00000008]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  6
+SOCK DEBUG | Sending segment with ID: [00000009]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[3]
+SOCK DEBUG | Received segment with ID: [00000003]
+SOCK DEBUG | Current ID:  3
+SOCK DEBUG | Expected ID:  3
+SOCK DEBUG | Current Offset:  6
+LOSSY UDP  | Received packet with length: 1000 ID[4]
+SOCK DEBUG | Received segment with ID: [00000004]
+SOCK DEBUG | Current ID:  4
+SOCK DEBUG | Expected ID:  4
+SOCK DEBUG | Current Offset:  5
+LOSSY UDP  | Received packet with length: 1000 ID[5]
+SOCK DEBUG | Received segment with ID: [00000005]
+SOCK DEBUG | Current ID:  5
+SOCK DEBUG | Expected ID:  5
+SOCK DEBUG | Current Offset:  4
+LOSSY UDP  | Received packet with length: 1000 ID[6]
+SOCK DEBUG | Received segment with ID: [00000006]
+SOCK DEBUG | Current ID:  6
+SOCK DEBUG | Expected ID:  6
+SOCK DEBUG | Current Offset:  3
+LOSSY UDP  | Received packet with length: 1000 ID[7]
+SOCK DEBUG | Received segment with ID: [00000007]
+SOCK DEBUG | Current ID:  7
+SOCK DEBUG | Expected ID:  7
+SOCK DEBUG | Current Offset:  2
+SOCK DEBUG | Current Offset:  2
+SOCK DEBUG | Sending segment with ID: [00000010]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  3
+SOCK DEBUG | Sending segment with ID: [00000011]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[8]
+SOCK DEBUG | Received segment with ID: [00000008]
+SOCK DEBUG | Current ID:  8
+SOCK DEBUG | Expected ID:  8
+SOCK DEBUG | Current Offset:  3
+LOSSY UDP  | Received packet with length: 1000 ID[9]
+SOCK DEBUG | Received segment with ID: [00000009]
+SOCK DEBUG | Current ID:  9
+SOCK DEBUG | Expected ID:  9
+SOCK DEBUG | Current Offset:  2
+SOCK DEBUG | Current Offset:  2
+SOCK DEBUG | Sending segment with ID: [00000012]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  3
+SOCK DEBUG | Sending segment with ID: [00000013]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  4
+SOCK DEBUG | Sending segment with ID: [00000014]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  5
+SOCK DEBUG | Sending segment with ID: [00000015]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  6
+SOCK DEBUG | Sending segment with ID: [00000016]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  7
+SOCK DEBUG | Sending segment with ID: [00000017]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  8
+SOCK DEBUG | Sending segment with ID: [00000018]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  9
+SOCK DEBUG | Sending segment with ID: [00000019]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  10
+LOSSY UDP  | Received packet with length: 1000 ID[10]
+SOCK DEBUG | Received segment with ID: [00000010]
+SOCK DEBUG | Current ID:  10
+SOCK DEBUG | Expected ID:  10
+SOCK DEBUG | Current Offset:  10
+LOSSY UDP  | Received packet with length: 1000 ID[11]
+SOCK DEBUG | Received segment with ID: [00000011]
+SOCK DEBUG | Current ID:  11
+SOCK DEBUG | Expected ID:  11
+SOCK DEBUG | Current Offset:  9
+LOSSY UDP  | Received packet with length: 1000 ID[12]
+SOCK DEBUG | Received segment with ID: [00000012]
+SOCK DEBUG | Current ID:  12
+SOCK DEBUG | Expected ID:  12
+SOCK DEBUG | Current Offset:  10
+LOSSY UDP  | Received packet with length: 1000 ID[13]
+SOCK DEBUG | Received segment with ID: [00000013]
+SOCK DEBUG | Current ID:  13
+SOCK DEBUG | Expected ID:  13
+SOCK DEBUG | Current Offset:  9
+SOCK DEBUG | Sending segment with ID: [00000022]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  9
+SOCK DEBUG | Sending segment with ID: [00000023]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[14]
+SOCK DEBUG | Received segment with ID: [00000014]
+SOCK DEBUG | Current ID:  14
+SOCK DEBUG | Expected ID:  14
+SOCK DEBUG | Current Offset:  9
+LOSSY UDP  | Received packet with length: 1000 ID[15]
+SOCK DEBUG | Received segment with ID: [00000015]
+SOCK DEBUG | Current ID:  15
+SOCK DEBUG | Expected ID:  15
+SOCK DEBUG | Current Offset:  8
+LOSSY UDP  | Received packet with length: 1000 ID[16]
+SOCK DEBUG | Received segment with ID: [00000016]
+SOCK DEBUG | Current ID:  16
+SOCK DEBUG | Expected ID:  16
+SOCK DEBUG | Current Offset:  7
+LOSSY UDP  | Received packet with length: 1000 ID[17]
+SOCK DEBUG | Received segment with ID: [00000017]
+SOCK DEBUG | Current ID:  17
+SOCK DEBUG | Expected ID:  17
+SOCK DEBUG | Current Offset:  6
+LOSSY UDP  | Received packet with length: 1000 ID[18]
+SOCK DEBUG | Received segment with ID: [00000018]
+SOCK DEBUG | Current ID:  18
+SOCK DEBUG | Expected ID:  18
+SOCK DEBUG | Current Offset:  5
+LOSSY UDP  | Received packet with length: 1000 ID[19]
+SOCK DEBUG | Received segment with ID: [00000019]
+SOCK DEBUG | Current ID:  19
+SOCK DEBUG | Expected ID:  19
+SOCK DEBUG | Current Offset:  4
+LOSSY UDP  | Received packet with length: 1000 ID[20]
+SOCK DEBUG | Received segment with ID: [00000020]
+SOCK DEBUG | Current ID:  20
+SOCK DEBUG | Expected ID:  20
+SOCK DEBUG | Current Offset:  3
+LOSSY UDP  | Received packet with length: 1000 ID[21]
+SOCK DEBUG | Received segment with ID: [00000021]
+SOCK DEBUG | Current ID:  21
+SOCK DEBUG | Expected ID:  21
+SOCK DEBUG | Current Offset:  2
+LOSSY UDP  | Received packet with length: 1000 ID[22]
+SOCK DEBUG | Received segment with ID: [00000022]
+SOCK DEBUG | Current ID:  22
+SOCK DEBUG | Expected ID:  22
+SOCK DEBUG | Current Offset:  1
+LOSSY UDP  | Received packet with length: 1000 ID[23]
+SOCK DEBUG | Received segment with ID: [00000023]
+SOCK DEBUG | Current ID:  23
+SOCK DEBUG | Expected ID:  23
+SOCK DEBUG | Current Offset:  0
+SOCK DEBUG | Current Offset:  0
+SOCK DEBUG | Sending segment with ID: [00000024]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  1
+SOCK DEBUG | Sending segment with ID: [00000025]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  2
+SOCK DEBUG | Sending segment with ID: [00000026]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  3
+SOCK DEBUG | Sending segment with ID: [00000027]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  4
+SOCK DEBUG | Sending segment with ID: [00000028]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  5
+SOCK DEBUG | Sending segment with ID: [00000029]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  6
+SOCK DEBUG | Sending segment with ID: [00000030]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  7
+SOCK DEBUG | Sending segment with ID: [00000031]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  8
+SOCK DEBUG | Sending segment with ID: [00000032]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  9
+SOCK DEBUG | Sending segment with ID: [00000033]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  10
+LOSSY UDP  | Received packet with length: 1000 ID[24]
+SOCK DEBUG | Received segment with ID: [00000024]
+SOCK DEBUG | Current ID:  24
+SOCK DEBUG | Expected ID:  24
+SOCK DEBUG | Current Offset:  10
+LOSSY UDP  | Received packet with length: 1000 ID[25]
+SOCK DEBUG | Received segment with ID: [00000025]
+SOCK DEBUG | Current ID:  25
+SOCK DEBUG | Expected ID:  25
+SOCK DEBUG | Current Offset:  9
+LOSSY UDP  | Received packet with length: 1000 ID[26]
+SOCK DEBUG | Received segment with ID: [00000026]
+SOCK DEBUG | Current ID:  26
+SOCK DEBUG | Expected ID:  26
+SOCK DEBUG | Current Offset:  8
+LOSSY UDP  | Received packet with length: 1000 ID[27]
+SOCK DEBUG | Received segment with ID: [00000027]
+SOCK DEBUG | Current ID:  27
+SOCK DEBUG | Expected ID:  27
+SOCK DEBUG | Current Offset:  7
+LOSSY UDP  | Received packet with length: 1000 ID[28]
+SOCK DEBUG | Received segment with ID: [00000028]
+SOCK DEBUG | Current ID:  28
+SOCK DEBUG | Expected ID:  28
+SOCK DEBUG | Current Offset:  6
+LOSSY UDP  | Received packet with length: 1000 ID[29]
+SOCK DEBUG | Received segment with ID: [00000029]
+SOCK DEBUG | Current ID:  29
+SOCK DEBUG | Expected ID:  29
+SOCK DEBUG | Current Offset:  5
+LOSSY UDP  | Received packet with length: 1000 ID[30]
+SOCK DEBUG | Received segment with ID: [00000030]
+SOCK DEBUG | Current ID:  30
+SOCK DEBUG | Expected ID:  30
+SOCK DEBUG | Current Offset:  4
+LOSSY UDP  | Received packet with length: 1000 ID[31]
+SOCK DEBUG | Received segment with ID: [00000031]
+SOCK DEBUG | Current ID:  31
+SOCK DEBUG | Expected ID:  31
+SOCK DEBUG | Current Offset:  3
+LOSSY UDP  | Received packet with length: 1000 ID[32]
+SOCK DEBUG | Received segment with ID: [00000032]
+SOCK DEBUG | Current ID:  32
+SOCK DEBUG | Expected ID:  32
+SOCK DEBUG | Current Offset:  2
+SOCK DEBUG | Sending segment with ID: [00000034]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[33]
+SOCK DEBUG | Received segment with ID: [00000033]
+SOCK DEBUG | Current ID:  33
+SOCK DEBUG | Expected ID:  33
+SOCK DEBUG | Current Offset:  1
+LOSSY UDP  | Received packet with length: 1000 ID[34]
+SOCK DEBUG | Received segment with ID: [00000034]
+SOCK DEBUG | Current ID:  34
+SOCK DEBUG | Expected ID:  34
+SOCK DEBUG | Current Offset:  0
+SOCK DEBUG | Current Offset:  0
+SOCK DEBUG | Sending segment with ID: [00000035]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  1
+SOCK DEBUG | Sending segment with ID: [00000036]
+LOSSY UDP  | Sending packet with length: 1000
+LOSSY UDP  | Received packet with length: 1000 ID[35]
+SOCK DEBUG | Received segment with ID: [00000035]
+SOCK DEBUG | Current ID:  35
+SOCK DEBUG | Expected ID:  35
+SOCK DEBUG | Current Offset:  1
+LOSSY UDP  | Received packet with length: 1000 ID[36]
+SOCK DEBUG | Received segment with ID: [00000036]
+SOCK DEBUG | Current ID:  36
+SOCK DEBUG | Expected ID:  36
+SOCK DEBUG | Current Offset:  0
+SOCK DEBUG | Current Offset:  0
+SOCK DEBUG | Sending segment with ID: [00000037]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  1
+SOCK DEBUG | Sending segment with ID: [00000038]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  2
+SOCK DEBUG | Sending segment with ID: [00000039]
+LOSSY UDP  | Sending packet with length: 1000
+SOCK DEBUG | Current Offset:  3
+SOCK DEBUG | Sending segment with ID: [00000040]
+LOSSY UDP  | Sending packet with length: 328
+SOCK DEBUG | Current Offset:  4
+LOSSY UDP  | Received packet with length: 1000 ID[37]
+SOCK DEBUG | Received segment with ID: [00000037]
+SOCK DEBUG | Current ID:  37
+SOCK DEBUG | Expected ID:  37
+SOCK DEBUG | Current Offset:  4
+LOSSY UDP  | Received packet with length: 1000 ID[38]
+SOCK DEBUG | Received segment with ID: [00000038]
+SOCK DEBUG | Current ID:  38
+SOCK DEBUG | Expected ID:  38
+SOCK DEBUG | Current Offset:  3
+LOSSY UDP  | Received packet with length: 1000 ID[39]
+SOCK DEBUG | Received segment with ID: [00000039]
+SOCK DEBUG | Current ID:  39
+SOCK DEBUG | Expected ID:  39
+SOCK DEBUG | Current Offset:  2
+LOSSY UDP  | Received packet with length: 328 ID[40]
+SOCK DEBUG | Received segment with ID: [00000040]
+                                                                                                                                                                                                                                                               SOCK DEBUG | Current ID:  40
+SOCK DEBUG | Expected ID:  40
+SOCK DEBUG | Current Offset:  1
