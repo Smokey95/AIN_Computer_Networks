@@ -31,4 +31,5 @@ See the several tasks below.
 |---|---|
 | ![image](https://github-readme-streak-stats.herokuapp.com/?user=LarsBuergerr) | ![image](https://github-readme-streak-stats.herokuapp.com/?user=Smokey95)  |
 
-*The persons involved assume no liability for the information provided here.*
+*The contributors involved assume no liability for the information provided here.*
+*If you have any legal claims to the information shared here or wish to report a violation, please contact me at legalclaims.smokey95@gmail.com*
