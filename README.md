@@ -7,7 +7,9 @@
 
 ---
 
-This repository is intended for the lecture **Computer Networks"", formally known as *Rechnernetze*
+This repository is intended for the lecture **Computer Network**, formally known as *Rechnernetze*
+
+The lecture is part of the study program AIN (Applied Computer Science) at HTWG Konstanz.
  
 See the several tasks below.
 
@@ -28,3 +30,5 @@ See the several tasks below.
 | [LarsBuergerr](https://github.com/LarsBuergerr)  |  [Smokey95](https://github.com/Smokey95) | 
 |---|---|
 | ![image](https://github-readme-streak-stats.herokuapp.com/?user=LarsBuergerr) | ![image](https://github-readme-streak-stats.herokuapp.com/?user=Smokey95)  |
+
+*The persons involved assume no liability for the information provided here.*
