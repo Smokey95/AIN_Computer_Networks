@@ -7,20 +7,24 @@
 
 ---
 
-This repository is intended for the lecture computer networks, formally known as "Rechnernetze" 
+This repository is intended for the lecture **Computer Networks"", formally known as *Rechnernetze*
+ 
 See the several tasks below.
 
+---
+
+## Tasks
+
+### [Exercise 1: Supermarket simulation](https://github.com/Smokey95/Computer_Networks/tree/master/01_Exercise_Supermarket)
+### [Exercise 2: Wire Shark](https://github.com/Smokey95/Computer_Networks/tree/master/02_Exercise_WireShark)
+### [Exercise 3: Ping & Traceroute](https://github.com/Smokey95/Computer_Networks/tree/master/03_Exercise_Ping_Traceroute)
+
+### [Exercise 4: Sockets](https://github.com/Smokey95/AIN_Computer_Networks/tree/master/04_Exercise_Sockets)
+
+### [Exercise 5: Go-Back-N](https://github.com/Smokey95/AIN_Computer_Networks/tree/master/05_GoBackN)
 ---
 
 ## Contributors
 | [LarsBuergerr](https://github.com/LarsBuergerr)  |  [Smokey95](https://github.com/Smokey95) | 
 |---|---|
 | ![image](https://github-readme-streak-stats.herokuapp.com/?user=LarsBuergerr) | ![image](https://github-readme-streak-stats.herokuapp.com/?user=Smokey95)  |
-
----
-
-## Tasks
-
-### [Exercise 1: Supermarket simulation](https://github.com/Smokey95/Computer_Networks/tree/develop/01_Exercise_Supermarket)
-### [Exercise 2: Wire Shark](https://github.com/Smokey95/Computer_Networks/tree/develop/02_Exercise_WireShark)
-### [Exercise 3: Ping & Traceroute](https://github.com/Smokey95/Computer_Networks/tree/develop/03_Exercise_Ping_Traceroute)
