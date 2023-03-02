@@ -1,7 +1,7 @@
 ﻿# Computer Networks / Rechnernetze
  
 ![RepoSize](https://img.shields.io/github/repo-size/Smokey95/AIN_Computer_Networks)
-[![License](https://img.shields.io/github/license/Smokey95/AIN_Computer_Networks?color=green)](https://cdn130.picsart.com/272563229032201.jpg?r1024x1024)
+[![License](https://img.shields.io/github/license/Smokey95/AIN_Computer_Networks)](https://cdn130.picsart.com/272563229032201.jpg?r1024x1024)
 ![Forks](https://img.shields.io/github/forks/Smokey95/AIN_Computer_Networks?color=green&style=social)
 ![Watcher](https://img.shields.io/github/watchers/Smokey95/AIN_Computer_Networks?style=social)
 
